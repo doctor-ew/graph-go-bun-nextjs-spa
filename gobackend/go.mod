@@ -1,4 +1,4 @@
-module github.com/doctor-ew/graph-spa-bun/gobackend
+module ggithub.com/doctor-ew/graph-go-bun-nextjs-spa/gobackend
 
 go 1.21.4
 

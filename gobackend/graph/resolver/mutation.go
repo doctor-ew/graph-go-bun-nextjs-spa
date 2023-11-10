@@ -6,11 +6,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/doctor-ew/graph-go-bun-nextjs-spa/gobackend/graph/model"
 	"io/ioutil"
 	"net/http"
 	"strings"
-
-	"github.com/doctor-ew/graph-spa-bun/gobackend/graph/model"
 )
 
 type mutationResolver struct{ *Resolver }
