@@ -1,0 +1,47 @@
+# docker-compose
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '4000:4000'
+    depends_on:
+      - redis
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      mynetwork:
+        aliases:
+          - backend
+
+  redis:
+    image: "redis:latest"
+    networks:
+      mynetwork:
+        aliases:
+          - redis
+    ports:
+      - "6379:6379"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    networks:
+      mynetwork:
+        aliases:
+          - frontend
+
+networks:
+  mynetwork:
